@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PendulumView">
+        <attr name="totalNum" format="integer"></attr>
+        <attr name="ballColor" format="color"></attr>
+        <attr name="ballRadius" format="float"></attr>
+        <attr name="lineColor" format="color"></attr>
+        <attr name="amplitude" format="float"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="DanceNumView">
+        <attr name="dnv_duration" format="integer"/>
+        <attr name="dnv_format" format="string"/>
+    </declare-styleable>
+</resources>

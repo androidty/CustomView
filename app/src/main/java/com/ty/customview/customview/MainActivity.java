@@ -1,26 +1,64 @@
 package com.ty.customview.customview;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.ty.customview.customview.animationnumview.AnimationNumView;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
+import com.ty.customview.customview.adapter.MainRvAdapter;
+import com.ty.customview.customview.data.Constants;
+import com.ty.customview.customview.entity.ViewData;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private AnimationNumView animationNumView;
+
+    @BindView(R.id.main_recyclerview)
+    RecyclerView mMainRecyclerview;
+    private MainRvAdapter mMainRvAdapter;
+
+    private List<ViewData> mViewDatas = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        animationNumView = findViewById(R.id.animNumTextView);
-        animationNumView.setAnimationText("12345487164.26",1);
-        animationNumView.setOnClickListener(new View.OnClickListener() {
+        ButterKnife.bind(this);
+        init();
+        initDatas();
+    }
+
+    private void init() {
+
+        mMainRvAdapter = new MainRvAdapter(R.layout.item_main_rv, mViewDatas);
+        mMainRecyclerview.setLayoutManager(new LinearLayoutManager(this));
+        mMainRecyclerview.setAdapter(mMainRvAdapter);
+
+        mMainRecyclerview.addOnItemTouchListener(new OnItemChildClickListener() {
             @Override
-            public void onClick(View v) {
-                animationNumView.setAnimationText("12345487164.23",3);
+            public void onSimpleItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                startActivity(new Intent(MainActivity.this,Constants.sClasses[position]));
             }
         });
+    }
+
+    private void initDatas() {
+        String[] titles = getResources().getStringArray(R.array.titles);
+        String[] descs = getResources().getStringArray(R.array.descs);
+        for (int i = 0; i < Constants.sImgs.length; i++) {
+            ViewData viewData = new ViewData(titles[i], descs[i], Constants.sImgs[i]);
+            mMainRvAdapter.addData(viewData);
+        }
     }
 }

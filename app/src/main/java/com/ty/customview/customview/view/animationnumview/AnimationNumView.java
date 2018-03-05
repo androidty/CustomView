@@ -1,4 +1,4 @@
-package com.ty.customview.customview.animationnumview;
+package com.ty.customview.customview.view.animationnumview;
 
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;

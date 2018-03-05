@@ -3,4 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="animTvColor1">#ed4826</color>
+    <color name="animTvColor2">#2629ed</color>
+    <color name="animTvColor3">#0a9d40</color>
 </resources>
