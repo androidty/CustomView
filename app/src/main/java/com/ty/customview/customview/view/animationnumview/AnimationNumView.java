@@ -21,6 +21,7 @@ public class AnimationNumView extends android.support.v7.widget.AppCompatTextVie
     private final String KEEP_ONE_FIGURE = "#,###.0";
     private final String KEEP_TWO_FIGURE = "#,###.00";
     private final String KEEP_THREE_FIGURE = "#,###.000";
+    private final String KEEP_FOUR_FIGURE = "#,###.0000";
 
     private String KEEPFIGURE = KEEP_INTEGER;
 
@@ -99,6 +100,9 @@ public class AnimationNumView extends android.support.v7.widget.AppCompatTextVie
                 break;
             case 3:
                 KEEPFIGURE = KEEP_THREE_FIGURE;
+                break;
+            case 4:
+                KEEPFIGURE = KEEP_FOUR_FIGURE;
                 break;
         }
         df = new DecimalFormat(KEEPFIGURE);

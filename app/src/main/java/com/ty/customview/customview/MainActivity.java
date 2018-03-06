@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemChildClickListener;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.ty.customview.customview.adapter.MainRvAdapter;
 import com.ty.customview.customview.data.Constants;
 import com.ty.customview.customview.entity.ViewData;
@@ -45,9 +45,10 @@ public class MainActivity extends AppCompatActivity {
         mMainRecyclerview.setLayoutManager(new LinearLayoutManager(this));
         mMainRecyclerview.setAdapter(mMainRvAdapter);
 
-        mMainRecyclerview.addOnItemTouchListener(new OnItemChildClickListener() {
+        mMainRecyclerview.addOnItemTouchListener(new OnItemClickListener() {
+
             @Override
-            public void onSimpleItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
                 startActivity(new Intent(MainActivity.this,Constants.sClasses[position]));
             }
         });

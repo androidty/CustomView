@@ -30,8 +30,8 @@ public class AnimationNumActivity extends AppCompatActivity {
         setContentView(R.layout.activity_animationnum);
         ButterKnife.bind(this);
         mAnimNumTextView1.setAnimationText("122312148907.9844",3);
-        mAnimNumTextView1.setAnimationText("1222313907.9842",4);
-        mAnimNumTextView1.setStaticText("13231214907.9844");
+        mAnimNumTextView2.setAnimationText("1222313907.9842",4);
+        mAnimNumTextView3.setStaticText("13231214907.9844");
     }
 
     @OnClick({R.id.animNumTextView1, R.id.animNumTextView2, R.id.animNumTextView3})
