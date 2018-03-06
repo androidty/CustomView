@@ -18,6 +18,7 @@ public class Constants {
     };
 
     public static Class[] sClasses = {
+            
             AnimationNumActivity.class,
             LoadingWaveActivity.class
     };
