@@ -164,7 +164,6 @@ public class LoadingView extends View {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 mDynamicRectfY = (float) valueAnimator.getAnimatedValue();
-
             }
         });
         animator.start();

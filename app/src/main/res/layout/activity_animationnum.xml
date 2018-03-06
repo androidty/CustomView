@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activity.AnimationNumActivity">
+
+    <EditText
+        android:id="@+id/animnum_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入数字"
+        />
+
+    <Button
+        android:id="@+id/reset_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView2"
+        android:layout_below="@+id/animnum_et"
+        android:text="确定"/>
 
     <com.ty.customview.customview.view.animationnumview.AnimationNumView
         android:id="@+id/animNumTextView1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignStart="@+id/animNumTextView3"
+        android:layout_below="@+id/reset_btn"
+        android:layout_marginTop="13dp"
         android:padding="2dp"
         android:text="36521452232"
         android:textColor="@color/animTvColor1"
@@ -21,23 +40,67 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.257"/>
 
-    <com.ty.customview.customview.view.animationnumview.AnimationNumView
-        android:id="@+id/animNumTextView2"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="36521452232"
-        android:textSize="26sp"
+        android:layout_below="@+id/animNumTextView1"
+        android:layout_centerHorizontal="true"
+        android:text="不做动画，保留2位小数"
+        app:layout_constraintStart_toStartOf="@+id/animNumTextView1"
+        app:layout_constraintTop_toBottomOf="@+id/animNumTextView1"/>
+
+    <com.ty.customview.customview.view.animationnumview.AnimationNumView
+        android:id="@+id/animNumTextView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/animNumTextView3"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="14dp"
+        android:gravity="center"
         android:padding="2dp"
+        android:text="36521452232"
         android:textColor="@color/animTvColor1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="26sp"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/animNumTextView2"
+
+        android:layout_centerHorizontal="true"
+        android:text="保留整数"/>
 
     <com.ty.customview.customview.view.animationnumview.AnimationNumView
         android:id="@+id/animNumTextView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
+        android:padding="2dp"
+        android:gravity="center"
+        android:text="36521452232"
+        android:textColor="@color/animTvColor1"
+        android:textSize="26sp"/>
+
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/animNumTextView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="保留3位小数"/>
+
+    <com.ty.customview.customview.view.animationnumview.AnimationNumView
+        android:id="@+id/animNumTextView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/animNumTextView3"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="23dp"
         android:padding="2dp"
         android:text="36521452232"
         android:textColor="@color/animTvColor1"
@@ -46,6 +109,17 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.722"/>
+        android:gravity="center"
+        app:layout_constraintVertical_bias="0.822"/>
 
-</android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_alignTop="@+id/animNumTextView4"
+        android:layout_marginTop="43dp"
+        android:text="保留4位小数"/>
+
+</RelativeLayout>
