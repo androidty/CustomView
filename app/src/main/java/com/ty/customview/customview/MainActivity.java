@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import com.chad.library.adapter.base.listener.OnItemClickListener;
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
         mMainRecyclerview.setAdapter(mMainRvAdapter);
 
         mMainRecyclerview.addOnItemTouchListener(new OnItemClickListener() {
+
+         
+
 
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {

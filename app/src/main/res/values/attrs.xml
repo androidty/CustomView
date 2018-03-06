@@ -8,8 +8,5 @@
         <attr name="amplitude" format="float"></attr>
     </declare-styleable>
 
-    <declare-styleable name="DanceNumView">
-        <attr name="dnv_duration" format="integer"/>
-        <attr name="dnv_format" format="string"/>
-    </declare-styleable>
+
 </resources>
