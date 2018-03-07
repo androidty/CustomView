@@ -110,9 +110,29 @@ public class PendulumView extends View {
     }
 
     /**
+     * 摆动角度越来越小
+     */
+    private void radiansGradient() {
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat((float) (amplitude / 180 * Math.PI), 0);
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                mRadians = (float) valueAnimator.getAnimatedValue();
+            }
+        });
+
+        valueAnimator.setDuration(1000 * 30);
+        valueAnimator.start();
+    }
+
+
+    /**
      * 第一个小球摆动的动画
      */
     private void firstBallAnim() {
+        if (mRadians == 0) {
+            return;
+        }
         ValueAnimator valueAnimator = ValueAnimator.ofFloat(initialRadians, initialRadians + mRadians);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -183,7 +203,10 @@ public class PendulumView extends View {
         dotY = h / 3;
         lineLength = h / 3;
 //        ballRadius = 22f;
+        //默认第一个球开始动
         firstBallAnim();
+        //角度越来越小
+        radiansGradient();
 
 //        lastBallAnim();
     }
@@ -223,6 +246,11 @@ public class PendulumView extends View {
                         canvas.drawCircle(dotX + (2 * i - 1) * ballRadius, 2 * dotY, ballRadius, ballPaint);
                     }
                 }
+                if (i > 0) {
+                    canvas.drawCircle(dotX + (2 * i - 1) * ballRadius, dotY, ballRadius / 2, linePaint);
+                } else {
+                    canvas.drawCircle(dotX + (2 * i + 1) * ballRadius, dotY, ballRadius / 2, linePaint);
+                }
             } else {
                 if (i == minNo && !flag) {
                     canvas.drawLine(dotX + i * 2 * ballRadius, dotY, firstBallX + i * 2 * ballRadius,
@@ -239,6 +267,7 @@ public class PendulumView extends View {
                             linePaint);
                     canvas.drawCircle(dotX + i * 2 * ballRadius, 2 * dotY, ballRadius, ballPaint);
                 }
+                canvas.drawCircle(dotX + i * 2 * ballRadius, dotY, ballRadius / 2, linePaint);
             }
         }
         invalidate();
