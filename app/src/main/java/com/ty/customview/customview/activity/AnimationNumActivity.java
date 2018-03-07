@@ -39,6 +39,7 @@ public class AnimationNumActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animationnum);
         ButterKnife.bind(this);
+        getSupportActionBar().setTitle("动态数字");
 
     }
 

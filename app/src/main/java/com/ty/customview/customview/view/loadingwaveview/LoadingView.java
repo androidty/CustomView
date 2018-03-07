@@ -91,7 +91,7 @@ public class LoadingView extends View {
     private float[] resetWaveY2;
     //速度,两条水波纹要有速度差才有起伏感，接近真实的水
     private int waveSpeed1 = 4;
-    private int waveSpeed2 = 7;
+    private int waveSpeed2 = 8;
 
     //曲线水平移动的距离
     private int mWaveOffsetX1;
@@ -227,7 +227,7 @@ public class LoadingView extends View {
                 mDynamicRectfLeft = tempLeft;
                 mDynamicRectfRight = tempRight;
                 mDynamicRectfTop = 0;
-                topToBottomAnim();
+//                topToBottomAnim();
             }
         });
         animatorSet.start();
@@ -246,9 +246,9 @@ public class LoadingView extends View {
         //衔接起来，把源数组里从0开始从重设定数组的yWillMoveDistance开始复制mWaveOffsetX1多位
         System.arraycopy(originalWaveY, 0, resetWaveY1, yWillMoveDistance1, mWaveOffsetX1);
 
-        //第一条曲线要移动的距离
+        //第二条曲线要移动的距离
         int yWillMoveDistance2 = originalWaveY.length - mWaveOffsetX2;
-        //重新设定第一条曲线的所有y值
+        //重新设定第二条曲线的所有y值
         //把源数组里的数据从移动处开始从重设定数组的0开始复制yWillMoveDistance多位
         System.arraycopy(originalWaveY, mWaveOffsetX2, resetWaveY2, 0, yWillMoveDistance2);
         //衔接起来，把源数组里从0开始从重设定数组的yWillMoveDistance开始复制mWaveOffsetX1多位
@@ -443,11 +443,12 @@ public class LoadingView extends View {
         if (createBitmap() != null && mDynamicRectfY == mRoundBottom) {
             canvas.drawBitmap(createBitmap(), 0, 0, null);
         }
-        canvas.drawRect(mDynamicRectfLeft, mDynamicRectfTop, mDynamicRectfRight,
-                mDynamicRectfY - ((mDynamicWaveY < 9) ? (mDynamicWaveY) : (mDynamicWaveY - 10)),
-                roundRectPaint);
+//        canvas.drawRect(mDynamicRectfLeft, mDynamicRectfTop, mDynamicRectfRight,
+//                mDynamicRectfY - ((mDynamicWaveY < 9) ? (mDynamicWaveY) : (mDynamicWaveY - 10)),
+//                roundRectPaint);
         Log.d("1111111", "onDraw: " + mDynamicRectfLeft + "  " + mDynamicRectfTop + "  " + "  " +
                 mDynamicRectfRight + "  " + mDynamicRectfY);
+
         canvas.drawRect(mVerticalRect, mWhitePaint);
         canvas.drawPath(mMarkPath, mWhitePaint);
         //重绘

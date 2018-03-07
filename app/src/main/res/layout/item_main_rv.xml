@@ -20,14 +20,15 @@
             android:id="@+id/item_main_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_20"
-            android:layout_marginTop="5dp"
             android:text="牛顿摆"
+            android:layout_centerHorizontal="true"
             android:textColor="@android:color/black"
+            android:layout_alignParentTop="true"
             android:textSize="@dimen/sp_20"
             android:textStyle="bold"/>
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/item_main_desc_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,7 +43,7 @@
             android:id="@+id/item_main_gif_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/item_main_desc_tv"
+            android:layout_below="@+id/item_main_title_tv"
             android:layout_centerInParent="true"
             app:gif="@mipmap/pmldb"/>
 
@@ -51,7 +52,7 @@
             android:id="@+id/item_main_img_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/item_main_desc_tv"
+            android:layout_below="@+id/item_main_title_tv"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
     >
