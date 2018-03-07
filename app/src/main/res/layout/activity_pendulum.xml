@@ -13,9 +13,9 @@
         android:layout_centerInParent="true"
         android:background="#41c2b1"
         android:layout_margin="30dp"
-        app:amplitude="30"
+        app:amplitude="60"
         app:ballColor="@color/colorAccent"
-        app:ballRadius="20"
+        app:ballRadius="25"
         app:totalNum="7"
         app:lineColor="#504040"
         />
