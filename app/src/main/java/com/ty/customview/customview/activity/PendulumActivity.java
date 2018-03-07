@@ -23,8 +23,6 @@ public class PendulumActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pendulum);
         ButterKnife.bind(this);
-
         getSupportActionBar().setTitle("牛顿单摆");
-
     }
 }

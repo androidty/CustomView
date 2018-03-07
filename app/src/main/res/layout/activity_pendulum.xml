@@ -11,12 +11,12 @@
         android:layout_width="wrap_content"
         android:layout_height="350dp"
         android:layout_centerInParent="true"
-        android:background="#9fa4f8"
+        android:background="#41c2b1"
         android:layout_margin="30dp"
         app:amplitude="30"
         app:ballColor="@color/colorAccent"
         app:ballRadius="20"
-        app:totalNum="5"
+        app:totalNum="10"
         app:lineColor="#fff"
         />
 
