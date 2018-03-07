@@ -38,6 +38,7 @@ public class LoadingView extends View {
      * 2.画一个长条矩形（从上往下降落，落到圆角矩形的下边上停止，圆角矩形下沉后恢复，波浪开始上升）
      * 3.双波浪是用三角函数的曲线绘制，绘制两条正弦的曲线，设置不同速度让其重叠形成立体水波,canvas.drawLine()  y = Asin(wx+b)+h;
      * 4.双波浪在圆角矩形里慢慢上升上升到90%长条形矩形渐变细，上边下降
+     *
      * @param context
      */
 
@@ -341,7 +342,6 @@ public class LoadingView extends View {
     private void drawWave(Canvas canvas) {
         //画波纹
         //画波纹前先重设y值
-
         resetWaveY();
         if (mDynamicWaveY == 0) {
 //            mDynamicRectfLeft = tempLeft;
@@ -396,9 +396,9 @@ public class LoadingView extends View {
 
             mBackBitmap = getBitmapFromDrawable(mContext.getResources().getDrawable(R.drawable.rectangle));
 
-            mBackBitmap = Bitmap.createScaledBitmap(mBackBitmap, mRoundRectWidth + 1, mRoundRectHeight+2,
+            mBackBitmap = Bitmap.createScaledBitmap(mBackBitmap, mRoundRectWidth + 1, mRoundRectHeight + 2,
                     false);
-            canvas.drawBitmap(mBackBitmap, mRoundLeft - 1, mRoundTop-2, paint);
+            canvas.drawBitmap(mBackBitmap, mRoundLeft - 1, mRoundTop - 2, paint);
             return bitmap;
         } else {
             return null;
@@ -443,8 +443,8 @@ public class LoadingView extends View {
         if (createBitmap() != null && mDynamicRectfY == mRoundBottom) {
             canvas.drawBitmap(createBitmap(), 0, 0, null);
         }
-
-        canvas.drawRect(mDynamicRectfLeft, mDynamicRectfTop, mDynamicRectfRight, mDynamicRectfY,
+        canvas.drawRect(mDynamicRectfLeft, mDynamicRectfTop, mDynamicRectfRight,
+                mDynamicRectfY - ((mDynamicWaveY < 9) ? (mDynamicWaveY) : (mDynamicWaveY - 10)),
                 roundRectPaint);
         Log.d("1111111", "onDraw: " + mDynamicRectfLeft + "  " + mDynamicRectfTop + "  " + "  " +
                 mDynamicRectfRight + "  " + mDynamicRectfY);
