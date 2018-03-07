@@ -3,12 +3,11 @@ package com.ty.customview.customview;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.ty.customview.customview.adapter.MainRvAdapter;
 import com.ty.customview.customview.data.Constants;
@@ -43,17 +42,14 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
 
         mMainRvAdapter = new MainRvAdapter(R.layout.item_main_rv, mViewDatas);
-        mMainRecyclerview.setLayoutManager(new LinearLayoutManager(this));
+        mMainRecyclerview.setHasFixedSize(true);
+        mMainRecyclerview.setLayoutManager(new GridLayoutManager(this, 2));
         mMainRecyclerview.setAdapter(mMainRvAdapter);
 
         mMainRecyclerview.addOnItemTouchListener(new OnItemClickListener() {
-
-         
-
-
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
-                startActivity(new Intent(MainActivity.this,Constants.sClasses[position]));
+                startActivity(new Intent(MainActivity.this, Constants.sClasses[position]));
             }
         });
     }

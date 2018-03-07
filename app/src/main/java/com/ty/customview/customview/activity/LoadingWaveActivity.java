@@ -15,5 +15,6 @@ public class LoadingWaveActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loadingwave);
+        getSupportActionBar().setTitle("3D水波纹");
     }
 }
