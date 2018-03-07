@@ -16,8 +16,8 @@
         app:amplitude="30"
         app:ballColor="@color/colorAccent"
         app:ballRadius="20"
-        app:totalNum="10"
-        app:lineColor="#fff"
+        app:totalNum="7"
+        app:lineColor="#504040"
         />
 
 </RelativeLayout>
