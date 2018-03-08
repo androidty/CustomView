@@ -28,10 +28,8 @@ public class PendulumView extends View {
     private float ballRadius;
     //画球的画笔
     private Paint ballPaint;
-    private int ballColor;
     //画线的画笔
     private Paint linePaint;
-    private int lineColor;
 
     //小球数量
     private int totalNums;
@@ -73,8 +71,8 @@ public class PendulumView extends View {
         if (totalNums < 3) {
             totalNums = 5;
         }
-        ballColor = typedArray.getColor(R.styleable.PendulumView_ballColor, Color.BLACK);
-        lineColor = typedArray.getColor(R.styleable.PendulumView_lineColor, Color.BLACK);
+        int ballColor = typedArray.getColor(R.styleable.PendulumView_ballColor, Color.BLACK);
+        int lineColor = typedArray.getColor(R.styleable.PendulumView_lineColor, Color.BLACK);
         ballRadius = typedArray.getFloat(R.styleable.PendulumView_ballRadius, 22f);
         amplitude = typedArray.getFloat(R.styleable.PendulumView_amplitude, 45);
         typedArray.recycle();
@@ -121,7 +119,7 @@ public class PendulumView extends View {
             }
         });
 
-        valueAnimator.setDuration(1000 * 30);
+        valueAnimator.setDuration(1000 * 60 * 10);
         valueAnimator.start();
     }
 

@@ -227,7 +227,7 @@ public class LoadingView extends View {
                 mDynamicRectfLeft = tempLeft;
                 mDynamicRectfRight = tempRight;
                 mDynamicRectfTop = 0;
-//                topToBottomAnim();
+                topToBottomAnim();
             }
         });
         animatorSet.start();
@@ -443,9 +443,9 @@ public class LoadingView extends View {
         if (createBitmap() != null && mDynamicRectfY == mRoundBottom) {
             canvas.drawBitmap(createBitmap(), 0, 0, null);
         }
-//        canvas.drawRect(mDynamicRectfLeft, mDynamicRectfTop, mDynamicRectfRight,
-//                mDynamicRectfY - ((mDynamicWaveY < 9) ? (mDynamicWaveY) : (mDynamicWaveY - 10)),
-//                roundRectPaint);
+        canvas.drawRect(mDynamicRectfLeft, mDynamicRectfTop, mDynamicRectfRight,
+                mDynamicRectfY - ((mDynamicWaveY < 9) ? (mDynamicWaveY) : (mDynamicWaveY - 10)),
+                roundRectPaint);
         Log.d("1111111", "onDraw: " + mDynamicRectfLeft + "  " + mDynamicRectfTop + "  " + "  " +
                 mDynamicRectfRight + "  " + mDynamicRectfY);
 

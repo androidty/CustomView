@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         mMainRecyclerview.setHasFixedSize(true);
         mMainRecyclerview.setLayoutManager(new GridLayoutManager(this, 2));
         mMainRecyclerview.setAdapter(mMainRvAdapter);
-
         mMainRecyclerview.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
