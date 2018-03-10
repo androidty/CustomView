@@ -19,6 +19,7 @@
         <activity android:name=".activity.AnimationNumActivity"></activity>
         <activity android:name=".activity.LoadingWaveActivity"></activity>
         <activity android:name=".activity.PendulumActivity"></activity>
+        <activity android:name=".activity.BowActivity"></activity>
     </application>
 
 </manifest>

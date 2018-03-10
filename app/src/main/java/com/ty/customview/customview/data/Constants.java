@@ -1,7 +1,7 @@
 package com.ty.customview.customview.data;
 
 import com.ty.customview.customview.R;
-import com.ty.customview.customview.activity.AnimationNumActivity;
+import com.ty.customview.customview.activity.BowActivity;
 import com.ty.customview.customview.activity.LoadingWaveActivity;
 import com.ty.customview.customview.activity.PendulumActivity;
 import com.ty.customview.customview.entity.ViewData;
@@ -21,7 +21,8 @@ public class Constants {
     public static Class[] sClasses = {
             LoadingWaveActivity.class,
             PendulumActivity.class,
-            AnimationNumActivity.class
+//            AnimationNumActivity.class
+            BowActivity.class
     };
 
 }
