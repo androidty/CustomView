@@ -8,5 +8,9 @@
         <attr name="amplitude" format="float"></attr>
     </declare-styleable>
 
+    <declare-styleable name="BowView">
+        <attr name="bowColor" format="color"></attr>
+    </declare-styleable>
+
 
 </resources>

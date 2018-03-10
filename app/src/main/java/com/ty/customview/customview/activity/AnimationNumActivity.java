@@ -40,7 +40,6 @@ public class AnimationNumActivity extends AppCompatActivity {
         setContentView(R.layout.activity_animationnum);
         ButterKnife.bind(this);
         getSupportActionBar().setTitle("动态数字");
-
     }
 
 
@@ -48,65 +47,62 @@ public class AnimationNumActivity extends AppCompatActivity {
     public void onViewClicked() {
         hideSoftKeyboard();
         String s = mAnimnumEt.getText().toString();
-        if(mAnimnumEt.getText().toString().equals("")){
-            s="20145201314";
+        if (mAnimnumEt.getText().toString().equals("")) {
+            s = "20145201314";
         }
         mAnimNumTextView1.setStaticText(s, 2);
         mAnimNumTextView2.setAnimationText(s, 0);
         mAnimNumTextView3.setAnimationText(s, 3);
         mAnimNumTextView4.setAnimationText(s, 4);
-
-      
     }
-
 
 
     /**
      * Shows the soft input for its input text, by  reflection mechanism
      */
-    public  void showSoftKeyboard() {
+    public void showSoftKeyboard() {
         Object o = null;
-        try{
+        try {
             Class<?> threadClazz = Class.forName("android.view.inputmethod.InputMethodManager");
 
-            Method method = threadClazz.getDeclaredMethod("peekInstance" );//return sInstance
+            Method method = threadClazz.getDeclaredMethod("peekInstance");//return sInstance
             Method[] methods = threadClazz.getDeclaredMethods();
 
-            method.setAccessible( true);
-            o = method.invoke( null);
-            if(o == null ){
+            method.setAccessible(true);
+            o = method.invoke(null);
+            if (o == null) {
                 return;
             }
-            InputMethodManager inputMethodManager = (InputMethodManager)o;
+            InputMethodManager inputMethodManager = (InputMethodManager) o;
             if (inputMethodManager != null) {
                 mAnimnumEt.requestFocus();
-                inputMethodManager.showSoftInput( mAnimnumEt, 0);
+                inputMethodManager.showSoftInput(mAnimnumEt, 0);
             }
-        } catch (Exception e){
+        } catch (Exception e) {
         }
     }
 
     /**
      * Hides the soft input if it is active for the input text, by  reflection mechanism
      */
-    public void hideSoftKeyboard(){
+    public void hideSoftKeyboard() {
         Object o = null;
-        try{
+        try {
             Class<?> threadClazz = Class.forName("android.view.inputmethod.InputMethodManager");
 
             Method method = threadClazz.getDeclaredMethod("peekInstance");//return sInstance
             Method[] methods = threadClazz.getDeclaredMethods();
 
-            method.setAccessible( true);
-            o = method.invoke( null);
-            if(o == null ){
+            method.setAccessible(true);
+            o = method.invoke(null);
+            if (o == null) {
                 return;
             }
-            InputMethodManager inputMethodManager = (InputMethodManager)o;
-            if (inputMethodManager != null && inputMethodManager.isActive(mAnimnumEt )) {
-                inputMethodManager.hideSoftInputFromWindow(mAnimnumEt .getWindowToken(), 0);
+            InputMethodManager inputMethodManager = (InputMethodManager) o;
+            if (inputMethodManager != null && inputMethodManager.isActive(mAnimnumEt)) {
+                inputMethodManager.hideSoftInputFromWindow(mAnimnumEt.getWindowToken(), 0);
             }
-        } catch (Exception e){
+        } catch (Exception e) {
         }
     }
 }
