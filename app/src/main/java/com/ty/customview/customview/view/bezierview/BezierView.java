@@ -1,5 +1,7 @@
 package com.ty.customview.customview.view.bezierview;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -61,31 +63,30 @@ public class BezierView extends View {
         mMeasureWidth = MeasureSpec.getSize(widthMeasureSpec);
         mMeasureHeight = MeasureSpec.getSize(heightMeasureSpec);
         if (mWidthMode == MeasureSpec.AT_MOST && mHeightMode == MeasureSpec.AT_MOST) {
-            setMeasuredDimension(200, 200);
+            setMeasuredDimension(300, 300);
         } else if (mWidthMode == MeasureSpec.AT_MOST) {
-            setMeasuredDimension(200, mMeasureHeight);
+            setMeasuredDimension(300, mMeasureHeight);
         } else if (mHeightMode == MeasureSpec.AT_MOST) {
-            setMeasuredDimension(mMeasureWidth, 200);
+            setMeasuredDimension(mMeasureWidth, 300);
         } else {
             setMeasuredDimension(mMeasureWidth, mMeasureHeight);
         }
-//        mWidth = getWidth();
-//        mHeight = getHeight();
+        mWidth = getWidth();
+        mHeight = getHeight();
+        initDot();
 
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        mWidth = w;
-        mHeight = h;
-        initDot();
+
     }
 
     private void initDot() {
         startDot = new PointF(mWidth / 8, mHeight / 5 * 3);
         endDot = new PointF(mWidth / 8 * 7, mHeight / 5 * 3);
-        controlDot1 = new PointF(mWidth / 3, mHeight / 5);
+        controlDot1 = new PointF(mWidth / 3 * 2, mHeight / 5 * 1);
 
         transitionDot1 = new PointF(startDot.x, startDot.y);
         transitionDot2 = new PointF(controlDot1.x, controlDot1.y);
@@ -179,8 +180,8 @@ public class BezierView extends View {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 pathDot1.x = (float) valueAnimator.getAnimatedValue() * (transitionDot2.x -
-                        transitionDot1.x) * 2
-                        + startDot.x;
+                        transitionDot1.x)
+                        + transitionDot1.x;
             }
         });
         ValueAnimator valuePathY = ValueAnimator.ofFloat(0, 1);
@@ -189,8 +190,8 @@ public class BezierView extends View {
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
 
                 if (transitionDot1.y > transitionDot2.y) {
-                    pathDot1.y = (1-(float) valueAnimator.getAnimatedValue())*
-                            (transitionDot1.y-transitionDot2.y)+transitionDot2.y;
+                    pathDot1.y = (1 - (float) valueAnimator.getAnimatedValue()) *
+                            (transitionDot1.y - transitionDot2.y) + transitionDot2.y;
                 } else if (transitionDot1.y < transitionDot2.y) {
                     pathDot1.y = (float) valueAnimator.getAnimatedValue() * (transitionDot2.y -
                             transitionDot1.y)
@@ -204,7 +205,20 @@ public class BezierView extends View {
         animatorSet.setDuration(5000);
         animatorSet.setInterpolator(new LinearInterpolator());
         animatorSet.play(valuePathX).with(valuePathY);
+
+        animatorSet.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                mPath.reset();
+                mPath.moveTo(startDot.x, startDot.y);
+                drawWithAnimation();
+                anim();
+
+            }
+        });
         animatorSet.start();
+
 
     }
 

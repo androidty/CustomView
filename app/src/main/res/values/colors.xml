@@ -6,4 +6,7 @@
     <color name="animTvColor1">#ed4826</color>
     <color name="animTvColor2">#2629ed</color>
     <color name="animTvColor3">#0a9d40</color>
+    <color name="ringBackColor">#d3d5d4</color>
+    <color name="ringProgressColor">#40efe6</color>
+
 </resources>
