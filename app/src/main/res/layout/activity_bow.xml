@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_centerInParent="true"
-        android:visibility="gone"
+        android:visibility="visible"
         />
 
     <com.ty.customview.customview.view.bezierview.BezierView
@@ -21,12 +21,14 @@
 
     <com.ty.customview.customview.view.ringprogressview.RingProgressView
         android:id="@+id/ringProgressView"
+        android:visibility="gone"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"/>
 
     <ImageView
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/ringProgressView"
@@ -36,6 +38,7 @@
         android:id="@+id/imageView"/>
 
     <TextView
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView"
