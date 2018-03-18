@@ -12,6 +12,7 @@ import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.ty.customview.customview.adapter.MainRvAdapter;
 import com.ty.customview.customview.data.Constants;
 import com.ty.customview.customview.entity.ViewData;
+import com.ty.customview.customview.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-
+        Util.getChar("agbcokciolidsolloooshdo");
         mMainRvAdapter = new MainRvAdapter(R.layout.item_main_rv, mViewDatas);
         mMainRecyclerview.setHasFixedSize(true);
         mMainRecyclerview.setLayoutManager(new GridLayoutManager(this, 2));

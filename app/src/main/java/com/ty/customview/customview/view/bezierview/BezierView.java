@@ -189,8 +189,8 @@ public class BezierView extends View {
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
 
                 if (transitionDot1.y > transitionDot2.y) {
-                    pathDot1.y = (1-(float) valueAnimator.getAnimatedValue())*
-                            (transitionDot1.y-transitionDot2.y)+transitionDot2.y;
+                    pathDot1.y = (1 - (float) valueAnimator.getAnimatedValue()) *
+                            (transitionDot1.y - transitionDot2.y) + transitionDot2.y;
                 } else if (transitionDot1.y < transitionDot2.y) {
                     pathDot1.y = (float) valueAnimator.getAnimatedValue() * (transitionDot2.y -
                             transitionDot1.y)
