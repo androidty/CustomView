@@ -3,9 +3,9 @@ package com.ty.customview.customview.view.animationnumview;
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.animation.LinearInterpolator;
 
 import java.text.DecimalFormat;
 
@@ -64,11 +64,11 @@ public class AnimationNumView extends android.support.v7.widget.AppCompatTextVie
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 res = ((Double) animation.getAnimatedValue());
-                invalidate();
+                setText(formatTosepara(res));
             }
 
         });
-        animator.setDuration(3000);
+        animator.setDuration(1000);
         animator.start();
     }
 
@@ -78,13 +78,21 @@ public class AnimationNumView extends android.support.v7.widget.AppCompatTextVie
         setAnimationText(text);
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        if (openAnimation) {
-            this.setText(formatTosepara(res));
-        }
+    int numInt=0;
+    public void setIntegerAnimationNum(int num) {
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(0, num);
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                numInt = (int) animation.getAnimatedValue();
+                setText(formatTosepara(numInt));
+            }
+        });
+        valueAnimator.setDuration(1000);
+        valueAnimator.setInterpolator(new LinearInterpolator());
+        valueAnimator.start();
     }
+
 
     public String formatTosepara(Object data) {
         DecimalFormat df;
@@ -131,9 +139,10 @@ public class AnimationNumView extends android.support.v7.widget.AppCompatTextVie
         return keepFigures;
     }
 
-
     private boolean isNum(String str) {
         String reg = "^[0-9]+(.[0-9]+)?$";
         return str.matches(reg);
     }
+
+
 }
