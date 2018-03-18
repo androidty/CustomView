@@ -19,6 +19,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 
@@ -224,14 +225,36 @@ public class LoadingView extends View {
             @Override
             public void onAnimationEnd(Animator animation) {
                 Log.d("onanimation", "onAnimationEnd: " + mDynamicRectfRight + " " + mDynamicRectfLeft);
+
+                topStopAnimation();
+            }
+        });
+        animatorSet.start();
+
+    }
+    //到顶后做一个停顿的动画
+    private void topStopAnimation(){
+        final ValueAnimator animator = ValueAnimator.ofFloat(0,5);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                mDynamicWaveY = (float) valueAnimator.getAnimatedValue()+mDynamicWaveY;
+            }
+        });
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.setDuration(4000);
+        animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
+        animatorSet.play(animator);
+        animatorSet.start();
+        animatorSet.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
                 mDynamicRectfLeft = tempLeft;
                 mDynamicRectfRight = tempRight;
                 mDynamicRectfTop = 0;
                 topToBottomAnim();
             }
         });
-        animatorSet.start();
-
 
     }
 
@@ -362,10 +385,17 @@ public class LoadingView extends View {
 //            topToBottomAnim();
         }
         for (int i = 0; i < mRoundRectWidth; i++) {
+            float y1 = mRoundBottom - resetWaveY1[i] - mDynamicWaveY;
+            y1 = y1 < mRoundTop ? mRoundTop : y1;
+            y1 = y1 > mRoundBottom ? mRoundBottom : y1;
+            float y2 = mRoundBottom - resetWaveY2[i] - mDynamicWaveY;
+            y2 = y2 < mRoundTop ? mRoundTop : y2;
+            y2 = y2 > mRoundBottom ? mRoundBottom : y2;
+
             //绘制第一条
-            canvas.drawLine(i + mRoundLeft, mRoundBottom - resetWaveY1[i] - mDynamicWaveY, i + mRoundLeft,
+            canvas.drawLine(i + mRoundLeft, y1, i + mRoundLeft,
                     mRoundBottom, wavePaint);
-            canvas.drawLine(i + mRoundLeft, mRoundBottom - resetWaveY2[i] - mDynamicWaveY, i + mRoundLeft,
+            canvas.drawLine(i + mRoundLeft, y2, i + mRoundLeft,
                     mRoundBottom, wavePaint);
         }
         mWaveOffsetX1 += waveSpeed1;
@@ -446,8 +476,6 @@ public class LoadingView extends View {
         canvas.drawRect(mDynamicRectfLeft, mDynamicRectfTop, mDynamicRectfRight,
                 mDynamicRectfY - ((mDynamicWaveY < 9) ? (mDynamicWaveY) : (mDynamicWaveY - 10)),
                 roundRectPaint);
-        Log.d("1111111", "onDraw: " + mDynamicRectfLeft + "  " + mDynamicRectfTop + "  " + "  " +
-                mDynamicRectfRight + "  " + mDynamicRectfY);
 
         canvas.drawRect(mVerticalRect, mWhitePaint);
         canvas.drawPath(mMarkPath, mWhitePaint);
