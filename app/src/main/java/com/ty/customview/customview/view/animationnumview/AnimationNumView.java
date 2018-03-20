@@ -1,5 +1,6 @@
 package com.ty.customview.customview.view.animationnumview;
 
+import android.animation.FloatEvaluator;
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -40,11 +41,12 @@ public class AnimationNumView extends android.support.v7.widget.AppCompatTextVie
         super(context, attrs, defStyleAttr);
     }
 
+
     static class DoubleEValuetor implements TypeEvaluator<Double> {
         @Override
-        public Double evaluate(float v, Double aDouble, Double t1) {
-            double x = v * t1;
-            return x;
+        public Double evaluate(float fraction, Double startValue, Double endValue) {
+            double startDouble = startValue.doubleValue();
+            return startDouble + fraction * (endValue.doubleValue() - startDouble);
         }
     }
 
@@ -68,7 +70,7 @@ public class AnimationNumView extends android.support.v7.widget.AppCompatTextVie
             }
 
         });
-        animator.setDuration(1000);
+        animator.setDuration(5000);
         animator.start();
     }
 
@@ -78,7 +80,8 @@ public class AnimationNumView extends android.support.v7.widget.AppCompatTextVie
         setAnimationText(text);
     }
 
-    int numInt=0;
+    int numInt = 0;
+
     public void setIntegerAnimationNum(int num) {
         ValueAnimator valueAnimator = ValueAnimator.ofInt(0, num);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
