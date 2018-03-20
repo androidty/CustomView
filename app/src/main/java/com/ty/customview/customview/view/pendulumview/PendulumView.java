@@ -118,7 +118,6 @@ public class PendulumView extends View {
                 mRadians = (float) valueAnimator.getAnimatedValue();
             }
         });
-
         valueAnimator.setDuration(1000 * 60 * 10);
         valueAnimator.start();
     }
@@ -144,7 +143,6 @@ public class PendulumView extends View {
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.setDuration(time);
         animatorSet.setInterpolator(new DecelerateInterpolator());
-//        valueAnimator.start();
         valueAnimator.setRepeatCount(1);
         valueAnimator.setRepeatMode(ValueAnimator.REVERSE);
         animatorSet.play(valueAnimator);

@@ -31,7 +31,6 @@
         android:layout_below="@+id/reset_btn"
         android:layout_marginTop="13dp"
         android:padding="2dp"
-        android:text="36521452232"
         android:textColor="@color/animTvColor1"
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -59,7 +58,6 @@
         android:layout_marginTop="14dp"
         android:gravity="center"
         android:padding="2dp"
-        android:text="36521452232"
         android:textColor="@color/animTvColor1"
         android:textSize="26sp"/>
 
@@ -81,7 +79,6 @@
         android:layout_marginTop="23dp"
         android:padding="2dp"
         android:gravity="center"
-        android:text="36521452232"
         android:textColor="@color/animTvColor1"
         android:textSize="26sp"/>
 
@@ -102,7 +99,6 @@
         android:layout_below="@+id/textView2"
         android:layout_marginTop="23dp"
         android:padding="2dp"
-        android:text="36521452233"
         android:textColor="@color/animTvColor1"
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
