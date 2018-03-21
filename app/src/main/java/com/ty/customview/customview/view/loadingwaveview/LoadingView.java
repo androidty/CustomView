@@ -417,7 +417,6 @@ public class LoadingView extends View {
         if (mDynamicRectfY == mRoundBottom) {
             bitmap = Bitmap.createBitmap(mRoundRectWidth * 2, mRoundRectHeight * 2, Bitmap.Config.ARGB_8888);
             canvas = new Canvas(bitmap);
-//        canvas.translate(mRoundLeft,mRoundTop);
             drawWave(canvas);
 
             paint = new Paint();

@@ -4,12 +4,18 @@
         <item>水波加载</item>
         <item>牛顿摆</item>
         <item>自定义控件阴影</item>
+        <item>弓形</item>
+        <item>贝塞尔曲线原理</item>
+        <item>圆环进度条</item>
     </string-array>
 
     <string-array name="descs">
         <item>3D水面加载动画</item>
         <item>仿牛顿单摆，可做加载动画</item>
         <item>看着很舒适带阴影控件</item>
+        <item>曲线的view</item>
+        <item>用属性动画以贝塞尔曲线原理绘制贝塞尔曲线</item>
+        <item>圆环进度条</item>
     </string-array>
 
 
