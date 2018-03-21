@@ -13,6 +13,7 @@ import android.graphics.PointF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
@@ -83,10 +84,14 @@ public class BezierView extends View {
 
     }
 
+    private boolean reset = false;
+
     private void initDot() {
         startDot = new PointF(mWidth / 8, mHeight / 5 * 3);
         endDot = new PointF(mWidth / 8 * 7, mHeight / 5 * 3);
-        controlDot1 = new PointF(mWidth / 3 * 2, mHeight / 5 * 1);
+        if (!reset) {
+            controlDot1 = new PointF(mWidth / 3 * 2, mHeight / 5 * 1);
+        }
 
         transitionDot1 = new PointF(startDot.x, startDot.y);
         transitionDot2 = new PointF(controlDot1.x, controlDot1.y);
@@ -132,6 +137,7 @@ public class BezierView extends View {
 
     }
 
+    AnimatorSet animatorSetDraw;
 
     private void drawWithAnimation() {
         ValueAnimator valueStartX = ValueAnimator.ofFloat(startDot.x, controlDot1.x);
@@ -166,13 +172,14 @@ public class BezierView extends View {
         });
 
 
-        AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.setDuration(5000);
-        animatorSet.setInterpolator(new LinearInterpolator());
-        animatorSet.play(valueEndX).with(valueEndY).with(valueStartX).with(valueStartY);
-        animatorSet.start();
+        animatorSetDraw = new AnimatorSet();
+        animatorSetDraw.setDuration(5000);
+        animatorSetDraw.setInterpolator(new LinearInterpolator());
+        animatorSetDraw.play(valueEndX).with(valueEndY).with(valueStartX).with(valueStartY);
+        animatorSetDraw.start();
     }
 
+    AnimatorSet animatorSet;
 
     private void anim() {
         ValueAnimator valuePathX = ValueAnimator.ofFloat(0, 1);
@@ -201,7 +208,7 @@ public class BezierView extends View {
                 }
             }
         });
-        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet = new AnimatorSet();
         animatorSet.setDuration(5000);
         animatorSet.setInterpolator(new LinearInterpolator());
         animatorSet.play(valuePathX).with(valuePathY);
@@ -210,16 +217,45 @@ public class BezierView extends View {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                mPath.reset();
-                mPath.moveTo(startDot.x, startDot.y);
-                drawWithAnimation();
-                anim();
+//                mPath.reset();
+//                mPath.moveTo(startDot.x, startDot.y);
+//                drawWithAnimation();
+//                anim();
 
             }
         });
         animatorSet.start();
 
 
+    }
+
+    boolean draw = true;
+    boolean touchIn = false;
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                animatorSetDraw.cancel();
+                animatorSet.cancel();
+
+                touchIn = isTouchPoint(event.getX(), event.getY(), controlDot1);
+                draw = false;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if (touchIn) {
+                    controlDot1.set(event.getX(), event.getY());
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+
+
+                draw = true;
+                reset = true;
+                initDot();
+                break;
+        }
+        return true;
     }
 
 
@@ -229,7 +265,9 @@ public class BezierView extends View {
 
         drawLine(canvas);
         drawDot(canvas);
-        drawControlLine(canvas);
+        if (draw) {
+            drawControlLine(canvas);
+        }
         invalidate();
     }
 
@@ -239,7 +277,7 @@ public class BezierView extends View {
         canvas.drawCircle(transitionDot1.x, transitionDot1.y, 20, mPointPaint);
         canvas.drawCircle(transitionDot2.x, transitionDot2.y, 20, mPointPaint);
         mPath.lineTo(pathDot1.x, pathDot1.y);
-        canvas.drawCircle(pathDot1.x, pathDot1.y, 20, mCurvePaint);
+        canvas.drawCircle(pathDot1.x, pathDot1.y, 16f, mCurvePaint);
 //        anim();
         canvas.drawPath(mPath, mCurvePaint);
     }
@@ -253,5 +291,9 @@ public class BezierView extends View {
         canvas.drawCircle(startDot.x, startDot.y, dotRadius, mPointPaint);
         canvas.drawCircle(endDot.x, endDot.y, dotRadius, mPointPaint);
         canvas.drawCircle(controlDot1.x, controlDot1.y, dotRadius, mPointPaint);
+    }
+
+    private boolean isTouchPoint(float x, float y, PointF pointF) {
+        return Math.sqrt(Math.pow(x - pointF.x, 2) + Math.pow(y - pointF.y, 2)) < 2 * dotRadius;
     }
 }

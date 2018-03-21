@@ -20,6 +20,8 @@
         <activity android:name=".activity.LoadingWaveActivity"></activity>
         <activity android:name=".activity.PendulumActivity"></activity>
         <activity android:name=".activity.BowActivity"></activity>
+        <activity android:name=".activity.BezierActivity"></activity>
+        <activity android:name=".activity.RingProgressActivity"></activity>
     </application>
 
 </manifest>

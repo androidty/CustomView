@@ -25,7 +25,7 @@ public class RingProgressView extends View {
     private float mWidth, mHeight;
     private float mStrokeWidth = Util.dp2px(getContext(), 10);
 
-    private float mProgress = 1.2f;
+    private float mProgress = 0.75f;
     private float dynamicProgress = 0f;
 
     public RingProgressView(Context context) {

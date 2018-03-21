@@ -48,7 +48,7 @@ public class AnimationNumActivity extends AppCompatActivity {
         hideSoftKeyboard();
         String s = mAnimnumEt.getText().toString();
         if (mAnimnumEt.getText().toString().equals("")) {
-            s = "20145201314";
+            s = "2014520.1314";
         }
         mAnimNumTextView1.setStaticText(s, 2);
         mAnimNumTextView2.setAnimationText(s, 0);
