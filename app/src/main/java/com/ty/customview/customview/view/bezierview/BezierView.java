@@ -23,6 +23,18 @@ import android.view.animation.LinearInterpolator;
 
 public class BezierView extends View {
 
+    /*
+    *
+    * 思维题：情景：20个主人，20
+    * 条狗，在同一个小区每天在同一个地方同时遛狗，狗主人绝对聪明，一旦发现自己家的狗是疯狗，回家之后就会用枪把狗打死。
+    * 第一天晚上遛狗回家后没有听见枪响，第二天晚上遛狗回家后没有听见枪响，第三天晚上遛狗回家后听见多声枪响，请问有多少条疯狗。
+条件：
+①狗主人不能直接发现自己家的狗是否是疯狗，可以发直接现别人家的狗是否是疯狗，凭此可以推断自己家的狗是否是疯狗
+②狗主人遛狗期间不会有任何交谈
+③疯狗不会传染
+    * */
+
+
     private Paint mPointPaint;
     private Paint mLinePaint, mControlLinePaint;
     private Paint mCurvePaint;

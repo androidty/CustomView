@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
                 startActivity(new Intent(MainActivity.this, Constants.sClasses[position]));
+//                RestartAPPTool.restartAPP(MainActivity.this,2000);
             }
         });
     }
