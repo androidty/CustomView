@@ -303,6 +303,8 @@ public class BezierView extends View {
         canvas.drawCircle(startDot.x, startDot.y, dotRadius, mPointPaint);
         canvas.drawCircle(endDot.x, endDot.y, dotRadius, mPointPaint);
         canvas.drawCircle(controlDot1.x, controlDot1.y, dotRadius, mPointPaint);
+        canvas.drawText("控制点", controlDot1.x + 1.5f * dotRadius, controlDot1.y + 0.5f * dotRadius,
+                mPointPaint);
     }
 
     private boolean isTouchPoint(float x, float y, PointF pointF) {
