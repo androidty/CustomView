@@ -13,7 +13,7 @@
         android:layout_centerInParent="true"
         android:background="#41c2b1"
         android:layout_margin="30dp"
-        app:amplitude="60"
+        app:amplitude="40"
         app:ballColor="@color/colorAccent"
         app:ballRadius="25"
         app:totalNum="7"

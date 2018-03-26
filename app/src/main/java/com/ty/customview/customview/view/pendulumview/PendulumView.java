@@ -12,7 +12,6 @@ import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
@@ -77,7 +76,6 @@ public class PendulumView extends View {
         ballRadius = typedArray.getFloat(R.styleable.PendulumView_ballRadius, 22f);
         amplitude = typedArray.getFloat(R.styleable.PendulumView_amplitude, 45);
         typedArray.recycle();
-
         setMinMaxNo();
 
         ballPaint = new Paint();
@@ -97,7 +95,6 @@ public class PendulumView extends View {
 
     private void setMinMaxNo() {
         if (totalNums % 2 == 0) {
-            //todo
             isEvenNo = true;
             maxNo = totalNums / 2;
             minNo = -totalNums / 2;
@@ -215,6 +212,11 @@ public class PendulumView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        if(isEvenNo){
+            canvas.drawLine(dotX+(2*minNo+1)*ballRadius,dotY,dotX+(2*maxNo-1)*ballRadius,dotY,linePaint);
+        }else{
+            canvas.drawLine(dotX + minNo * 2 * ballRadius, dotY,dotX + maxNo * 2 * ballRadius, dotY,linePaint);
+        }
 
         for (int i = minNo; i <= maxNo; i++) {
             if (isEvenNo) {
