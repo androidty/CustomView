@@ -65,15 +65,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void share(String content, Uri uri){
+    private void share(String content, Uri uri) {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        if(uri!=null){
+        if (uri != null) {
             //uri 是图片的地址
             shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
             shareIntent.setType("image/*");
             //当用户选择短信时使用sms_body取得文字
             shareIntent.putExtra("sms_body", content);
-        }else{
+        } else {
             shareIntent.setType("text/plain");
         }
         shareIntent.putExtra(Intent.EXTRA_TEXT, content);
@@ -82,4 +82,6 @@ public class MainActivity extends AppCompatActivity {
         //系统默认标题
         startActivity(shareIntent);
     }
+
+
 }
