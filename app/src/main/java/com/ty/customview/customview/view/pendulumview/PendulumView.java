@@ -233,13 +233,15 @@ public class PendulumView extends View {
                     canvas.drawCircle(lastBallX + (2 * i - 1) * ballRadius, lastBallY, ballRadius,
                             ballPaint);
                 } else {
-                    if (i < 0) {//(2i-1)r
+                    if (i < 0) {
+                        //(2i-1)r
                         canvas.drawLine(dotX + (2 * i + 1) * ballRadius, dotY, dotX + (2 * i + 1) *
                                         ballRadius, 2 * dotY,
                                 linePaint);
                         canvas.drawCircle(dotX + (2 * i + 1) * ballRadius, 2 * dotY, ballRadius, ballPaint);
 
-                    } else {//(2i-1)r
+                    } else {
+                        //(2i-1)r
                         canvas.drawLine(dotX + (2 * i - 1) * ballRadius, dotY, dotX + (2 * i - 1) *
                                 ballRadius, 2 * dotY, linePaint);
                         canvas.drawCircle(dotX + (2 * i - 1) * ballRadius, 2 * dotY, ballRadius, ballPaint);
