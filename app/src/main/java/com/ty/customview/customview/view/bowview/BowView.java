@@ -80,10 +80,10 @@ public class BowView extends View {
         } else {
             setMeasuredDimension(mMeasureWidth, mMeasureHeight);
         }
-        mWidth = getWidth();
-        mHeight = getHeight();
+        mWidth = getMeasuredWidth();
+        mHeight = getMeasuredHeight();
         mPath.moveTo(0, 0);
-        mPath.quadTo(mWidth / 2, 2 * mHeight, mWidth, 0);
+        mPath.quadTo(mWidth / 2,  mHeight/2, mWidth, 0);
         mPath.lineTo(0, 0);
     }
 

@@ -84,8 +84,8 @@ public class BezierView extends View {
         } else {
             setMeasuredDimension(mMeasureWidth, mMeasureHeight);
         }
-        mWidth = getWidth();
-        mHeight = getHeight();
+        mWidth = getMeasuredWidth();
+        mHeight = getMeasuredHeight();
         initDot();
 
     }

@@ -61,8 +61,8 @@ public class RingProgressView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        mWidth = getWidth();
-        mHeight = getHeight();
+        mWidth = getMeasuredWidth();
+        mHeight = getMeasuredHeight();
         if (mWidth != mHeight) {
             mWidth = mHeight = Math.min(mWidth, mHeight);
         }
