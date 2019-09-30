@@ -56,8 +56,8 @@ public class DisplayView extends LinearLayout {
         LinearLayout linearLayout = new LinearLayout(mContext);
         linearLayout.setOrientation(HORIZONTAL);
         TextView textViewSpilt = new TextView(mContext);
-        textViewSpilt.setText(spiltChar);
-        JustifyTextView textViewContent = new JustifyTextView(mContext);
+        textViewSpilt.setText(spiltChar.startsWith("\\")?spiltChar.substring(1):spiltChar);
+        TextView textViewContent = new TextView(mContext);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.leftMargin = 20;
         textViewContent.setLineSpacing(8,1);
@@ -65,6 +65,9 @@ public class DisplayView extends LinearLayout {
         textViewContent.setText(s);
         linearLayout.addView(textViewSpilt);
         linearLayout.addView(textViewContent);
+        LinearLayout.LayoutParams paramsl = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        paramsl.topMargin = 20;
+        linearLayout.setLayoutParams(paramsl);
         this.addView(linearLayout);
     }
 }

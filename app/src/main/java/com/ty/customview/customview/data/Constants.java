@@ -4,10 +4,12 @@ import com.ty.customview.customview.R;
 import com.ty.customview.customview.activity.AnimationNumActivity;
 import com.ty.customview.customview.activity.BezierActivity;
 import com.ty.customview.customview.activity.BowActivity;
+import com.ty.customview.customview.activity.DisplayViewActivity;
 import com.ty.customview.customview.activity.LoadingWaveActivity;
 import com.ty.customview.customview.activity.PendulumActivity;
 import com.ty.customview.customview.activity.RingProgressActivity;
 import com.ty.customview.customview.entity.ViewData;
+import com.ty.customview.customview.view.displayview.DisplayView;
 
 /**
  * Created by ty on 2018/3/5.
@@ -21,6 +23,7 @@ public class Constants {
             new ViewData.Img(R.mipmap.shadow, false),
             new ViewData.Img(R.mipmap.ic_launcher,false),
             new ViewData.Img(R.mipmap.ic_launcher,false),
+            new ViewData.Img(R.mipmap.ic_launcher,false),
             new ViewData.Img(R.mipmap.ic_launcher,false)
     };
 
@@ -30,7 +33,8 @@ public class Constants {
             AnimationNumActivity.class,
             BowActivity.class,
             BezierActivity.class,
-            RingProgressActivity.class
+            RingProgressActivity.class,
+            DisplayViewActivity.class
     };
 
 }
